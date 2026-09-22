@@ -1,0 +1,266 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="GHG算定実務者が学ぶ自然関連の貨幣価値評価とPRISMの計算・判断・開示。実装確認と学習例を区別した改訂教材。"><title>自然関連の価値評価とPRISM｜学習資料・改訂版</title><style>
+:root{--ink:#203333;--muted:#5b6a69;--line:#d8e1dd;--paper:#fffefa;--green:#165d52;--soft:#edf4ef;--amber:#8c561e;--warm:#fff5e8}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:25px}body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;font-size:15px;line-height:1.9}.layout{max-width:1260px;margin:auto;display:grid;grid-template-columns:245px minmax(0,1fr)}nav{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;padding:30px 22px;border-right:1px solid var(--line);font-size:12px}nav strong{display:block;font-size:15px;color:var(--green);margin-bottom:16px}nav a{display:block;text-decoration:none;color:var(--muted);padding:6px 0;line-height:1.6}nav a:hover,nav a:focus{color:var(--green);text-decoration:underline}main{padding:36px 48px 80px;min-width:0}header{padding:20px 0 30px;border-bottom:3px solid var(--green)}.kicker{font-size:12px;color:var(--green);letter-spacing:.1em;font-weight:700}h1{font-size:30px;line-height:1.6;margin:12px 0}h1 span{font-size:20px;display:block;font-weight:500}h2{font-size:23px;line-height:1.6;margin:0 0 22px;padding-bottom:13px;border-bottom:1px solid var(--line)}h3{font-size:18px;margin:28px 0 12px}section{padding-top:45px}p{margin:12px 0}a{color:var(--green);text-underline-offset:3px}.lead{font-size:17px}.meta,.source{font-size:12px;color:var(--muted)}.source{margin-top:20px}ul,ol{padding-left:1.6em}li{margin:8px 0}.note,.example{padding:18px 22px;background:var(--soft);border-left:4px solid var(--green);margin:23px 0}.example{background:var(--warm);border-color:var(--amber)}.note p:last-child,.example p:last-child{margin-bottom:0}.badge{display:inline-block;font-size:11px;padding:1px 8px;margin-right:5px;background:#e9eeeb;color:#355b50;border-radius:3px;vertical-align:middle}.badge.product{background:#dfeef0;color:#205b6a}.badge.example{background:#faebd6;color:#88541c}.table-wrap{overflow-x:auto;margin:20px 0}table{width:100%;border-collapse:collapse;font-size:13px;line-height:1.8;min-width:580px;margin:0}caption{text-align:left;color:var(--muted);font-size:12px;margin-bottom:9px}th,td{text-align:left;vertical-align:top;border-bottom:1px solid var(--line);padding:12px 13px}th{background:var(--soft);font-size:12px}td:first-child{min-width:125px}tr:last-child td{border-bottom:1px solid var(--line)}code{font-size:12px;overflow-wrap:anywhere;background:#edf0eb;padding:1px 4px}.formula{background:#eef1ed;border:1px solid var(--line);padding:18px;margin:18px 0;overflow-wrap:anywhere;font-size:14px}.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:25px 0}.flow>div{padding:18px;background:var(--soft);border-top:3px solid var(--green)}.flow span{display:block;font-size:12px;margin-top:8px}details{border:1px solid var(--line);border-radius:5px;padding:15px 19px;margin:14px 0;background:#fff}summary{cursor:pointer;font-weight:650;color:var(--green);line-height:1.7}summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #bb7d2d;outline-offset:3px}.quiz{background:#f8faf6}.sources{font-size:13px}.sources li{padding:5px 0}footer{border-top:1px solid var(--line);margin-top:50px;padding-top:18px;font-size:12px;color:var(--muted)}.tools{display:flex;gap:10px;margin:20px 0;flex-wrap:wrap}button{font:inherit;font-size:12px;background:white;color:var(--green);border:1px solid var(--line);border-radius:4px;padding:8px 12px;cursor:pointer}.skip{position:absolute;left:-9999px}.skip:focus{left:15px;top:10px;background:white;padding:10px;z-index:10}@media(max-width:950px){.layout{display:block}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:20px}nav .navlinks{display:grid;grid-template-columns:1fr 1fr;gap:2px 18px}main{padding:25px 25px 65px}}@media(max-width:550px){body{font-size:14px}main{padding:20px 18px 50px}h1{font-size:25px}h1 span{font-size:17px}h2{font-size:20px}.flow{grid-template-columns:1fr}.flow>div{padding:12px 16px}.note,.example{padding:15px 17px}nav .navlinks{font-size:11px}section{padding-top:35px}}@media print{nav,.tools,.skip{display:none}.layout{display:block}body{font-size:10pt;background:white}main{padding:0}h1{font-size:23pt}h2{font-size:16pt}h3{font-size:12pt}section{padding-top:20px}h2,h3,summary{break-after:avoid}tr,.note,.example,.flow{break-inside:avoid}table{min-width:0;font-size:9pt}.table-wrap{overflow:visible}details{padding:10px;break-inside:auto}a{color:inherit}.source,.meta{font-size:8pt}header{padding-top:0}@page{size:A4;margin:17mm}}
+</style></head><body><a class="skip" href="#start">本文へ</a><div class="layout"><nav aria-label="目次"><strong>自然関連の価値評価<br>PRISM 学習資料</strong><div class="navlinks"><a href="#start">はじめに：この資料でできるようになること</a><a href="#c1">1　GHG算定から自然関連評価へ</a><a href="#c2">2　最初に分ける3つの金額</a><a href="#c3">3　小さな例で、計算と解釈をつなぐ</a><a href="#c4">4　評価する対象と係数を決める</a><a href="#c5">5　枠組み・評価手法・データベースを使い分ける</a><a href="#c6">6　PRISMで何を入れ、何を得るか</a><a href="#c7">7　PRISMの内部計算：物理量から金額へ</a><a href="#c8">8　PRISMの内部計算：手法間の差を説明する</a><a href="#c9">9　PRISMの内部計算：財務と承認基準へつなぐ</a><a href="#c10">10　成果物、実務での使い方、PRISMの強み</a><a href="#c11">11　専門家との会話で確認すること</a><a href="#c12">12　確認問題：説明できれば、次の議論に進める</a><a href="#app-a">付録A　通しの計算例と記録様式</a><a href="#app-b">付録B　必要になってから読む発展事項</a><a href="#app-c">付録C　会話で使う用語</a><a href="#sources">付録D　原典とPRISMの確認先</a></div></nav><main><header><div class="kicker">LEARNING GUIDE · REVISED 2026.09.22</div><h1>自然関連の環境価値を理解する<span>GHG算定から、PRISMの計算・判断・開示へ</span></h1><p>価値の意味を分ける。差の理由を読む。判断に必要な根拠をそろえる。</p><p class="meta">元資料「自然関連の環境価値評価_学習資料(3).html」を基に再構成。一般論・製品実装・架空例を区別し、レビュー指摘を反映。</p></header><div class="tools"><button id="expand" type="button">発展欄・解答をすべて開く</button><button id="collapse" type="button">発展欄・解答を閉じる</button></div><section id="start"><h2>はじめに：この資料でできるようになること</h2>
+<p class="lead">GHG算定で培った「境界を決める・活動量を集める・係数と版を管理する」という知識を使い、自然関連の評価額が何を意味するかを読み解く。そのうえで、PRISMが評価結果を判断・開示・記録につなぐ仕組みを理解する。</p>
+<div class="note"><b>対象読者</b><p>GHG算定の実務知識があり、自然関連の環境価値の評価を初めて学ぶ人。環境経済学、統計、企業価値評価、プログラミングの事前知識は求めない。重要な専門語は本文で説明し、補助的な用語と数式の詳細は用語集・発展欄に置く。</p></div>
+<ul><li><b>説明できる：</b>社会的な損失額と自社の費用の違い、手法によって金額が変わる理由。</li><li><b>読み取れる：</b>PRISMの入力、計算、結果の使い方、利用者が決める事項、現在の制約。</li><li><b>質問できる：</b>外部コンサルや算定担当者に、境界・係数・価値概念・不確実性・根拠について確認する。</li></ul>
+<p>扱う範囲は<b>自然関連の環境価値と企業の判断への接続</b>。人的資本・社会的インパクトなど、非財務価値算定の全分野を網羅するものではない。また、一次評価調査や保証業務を単独で実施できることを到達目標にはしていない。</p>
+<div class="table-wrap"><table><caption>読み方と到達点</caption><thead><tr><th>順序</th><th>読む箇所</th><th>確認すること</th></tr></thead><tbody><tr><td>1 基礎</td><td>1〜5章</td><td>誰の何の価値を、どの条件で測った金額か</td></tr><tr><td>2 PRISM</td><td>6〜10章</td><td>どの入力がどの計算を経て、誰の判断に使われるか</td></tr><tr><td>3 会話と確認</td><td>11〜12章</td><td>説明を鵜呑みにせず、必要な根拠を質問できるか</td></tr><tr><td>必要時</td><td>付録A〜D</td><td>計算、統計、用語、原典・実装の確認</td></tr></tbody></table></div>
+<p class="meta">改訂・実装確認：2026年9月22日。PRISMは実装確認時のコード HEAD <code>4032238</code> と作業ツリー内の受入資料を参照。本書の「実装」はコード上の確認を意味し、本番環境の動作・顧客成果の確認を意味しない。<span class="badge">一般論</span> <span class="badge product">PRISMの実装</span> <span class="badge example">架空例</span>を区別する。</p>
+</section><section id="c1"><h2>1　GHG算定から自然関連評価へ</h2>
+<p>GHG算定の「活動量 × 排出係数 → 排出量 → CO₂e」は、自然関連評価の出発点を理解する助けになる。ただし、<b>負荷量を把握した段階では、自然や人への被害額も、自社の財務損失も分からない。</b></p>
+<div class="flow" aria-label="自然関連評価の流れ"><div><b>① 物理量</b><span>取水 m³、排出 kg<br>土地の占有 ha・年／転換 ha</span></div><div><b>② 影響</b><span>水不足・生態系変化<br>健康損失など</span></div><div><b>③ 価値</b><span>厚生への影響を貨幣化<br>または企業の費用を別途推計</span></div></div>
+<p><b>自然資本</b>は森林・水・土壌など自然の資産、<b>生態系サービス</b>は水の供給・浄化・送粉など人や事業を支える働き。生物多様性は生態系・種・遺伝子の多様性で、自然資本の状態や働きを支える。金額に表れるサービスだけに価値が限られるわけではない。</p><p>例えば、同じ1,000 m³の取水でも、水が豊富な流域と渇水地域では影響が違う。さらに、下流住民の被害と自社の代替水購入費は、同じ取水に関係していても別の金額である。</p>
+<div class="table-wrap"><table><caption>既知の知識をどこまで使えるか</caption><thead><tr><th>GHG算定で知っていること</th><th>自然関連で対応すること</th><th>新しく注意する点</th></tr></thead><tbody>
+<tr><td>組織境界・Scope 1/2/3</td><td>直接操業・上流・下流の範囲</td><td>GHGのScope区分を自然全般の正式分類として流用しない。流域・受益者などの影響範囲も必要</td></tr>
+<tr><td>活動量・排出係数</td><td>利用量・負荷量とインベントリ係数</td><td>取水と消費水、排出と移動、土地の占有と転換を分ける</td></tr>
+<tr><td>GWPによる特性化</td><td>環境負荷を共通の影響指標に変える特性化係数</td><td>地域・排出先・水源等に依存。生物多様性全般にCO₂eのような単一の共通指標はない</td></tr>
+<tr><td>炭素価格</td><td>貨幣化係数（通貨／物理量・被害量）</td><td>社会的炭素費用（SCC）、排出枠価格、社内価格が違うのと同様、損害・対策・復元の費用は別概念</td></tr>
+<tr><td>算定方法・係数の版管理</td><td>手法、地域補正、価格年、価値概念の記録</td><td>出典に加え、適用理由と含まれない影響も記録する</td></tr></tbody></table></div>
+<p><b>ミッドポイント</b>は富栄養化など影響経路の中間指標、<b>エンドポイント</b>は人間健康・生態系など保護対象への被害指標。統合化係数が①→③をまとめて表す場合、さらに同じ特性化・貨幣化係数を掛けると二重換算になる。</p>
+<p>GWPにも時間軸やIPCC版の選択はある。自然関連評価の特徴は「GHGと違って選択がある」ことではなく、<b>選択する価値概念と場所の条件が増える</b>ことにある。</p>
+<p class="source">参照：<a href="#s-protocol">Natural Capital Protocol</a>、<a href="#s-iso">ISO 14040/14044・14008</a>、<a href="#s-ipcc">IPCC AR6</a>。</p>
+</section><section id="c2"><h2>2　最初に分ける3つの金額</h2>
+<div class="table-wrap"><table><caption>目的が違えば、同じ対象でも異なる金額になる</caption><thead><tr><th>目的</th><th>測るもの</th><th>主な使い方</th></tr></thead><tbody>
+<tr><td><b>社会への影響</b></td><td>人々の健康・生活・自然から受ける便益の増減。厚生価値（welfare value）</td><td>環境負荷の比較、保全策の社会的便益評価</td></tr>
+<tr><td><b>企業への財務影響</b></td><td>規制、調達、操業等を介した、自社の収益・費用・投資・資産価値の変化</td><td>予算、投資稟議、調達先・拠点計画の検討</td></tr>
+<tr><td><b>会計・統計上の記録</b></td><td>国民経済計算と整合する交換価値（exchange value）。消費者余剰を含まない</td><td>SEEA EAの生態系勘定</td></tr></tbody></table></div>
+<p><b>厚生</b>は、人々の暮らしの良さ・便益を指す経済学の用語。<b>消費者余剰</b>は、支払ってもよいと思う額と実際の支払額の差。<b>支払意思額（WTP）</b>は便益の獲得や損失回避に支払う意思のある額で、実際の請求額ではない。権利関係によって受入補償額（WTA）を用いる考え方もある。</p>
+<div class="note"><b>共通ルール：金額には「誰の・何の・いつの」を付ける</b><p>通貨が同じでも、価値概念、対象、価格年、期間、計上基準が異なる値はそのまま合算しない。比較や合計の前に、同じ被害を別経路で数えていないか確認する。市場価格を使っていても、会計上の資産・負債として認識できるとは限らない。</p></div>
+<p><span class="badge product">PRISMの実装</span> PRISMは金額を <code>welfare</code>（厚生価値側）と <code>exchange</code>（費用・交換価値側）に分け、財務・投資判断には後者を接続する。<b>これは製品の分類・接続ルールであり、exchangeの全レコードがSEEA EA準拠の交換価値、実際の現金支出、または会計認識額であることを保証しない。</b>代替費用のモデル値なども含むため、企業負担になる経路を確認する。</p>
+<p>厚生価値は、一般には社会的費用便益分析や経営上の比較に利用できる。PRISMが財務判定へ直接流さない設計と、「厚生価値は意思決定に使えない」という説明は別である。</p>
+<p class="source">参照：<a href="#s-seea">SEEA EA 第8・12章</a>、<a href="#p-financial">PRISM財務接続コード</a>。</p>
+</section><section id="c3"><h2>3　小さな例で、計算と解釈をつなぐ</h2>
+<p><span class="badge example">すべて架空の学習例</span> 工場の節水設備への投資を検討する。次の2つは、同じ設備を別の立場から評価している。PRISMの実データ・実行結果ではない。</p>
+<div class="table-wrap"><table><thead><tr><th>社会への影響を見る</th><th>企業の投資を検討する</th></tr></thead><tbody><tr><td>消費水量が年間10,000 m³減る。対象流域に適合する厚生係数を仮に100円/m³とすれば、便益は<b>100万円／年</b>。</td><td>代替水の調達費など、自社が回避できる未計上の費用の現在価値が<b>200〜600万円</b>。設備費・通常の節約を織り込んだ通常NPVは<b>−300万円</b>。</td></tr><tr><td>これは社会への便益。自社の売上や補助金収入ではない。</td><td>自然関連費用の回避を加えると調整後NPVは<b>−100〜＋300万円</b>。承認基準0円をまたぐ。</td></tr></tbody></table></div>
+<p><b>NPV（正味現在価値）</b>は、将来の現金収支を現在の価値に割り引き、初期投資などを差し引いた額。上の例では、追加費用の根拠によって承認基準を超えるかどうかが変わる。次の行動は、より都合のよい金額を選ぶことではなく、代替水の価格・不足量・発生時期の根拠を確認することである。</p>
+<p>現在価値の小さな例として、回避費用が1年後の210万〜630万円だけなら、割引率5%で <b>210÷1.05＝200、630÷1.05＝600万円</b>となる。通常NPVと基準日をそろえてから足す。</p><p>社会的便益100万円／年を、そのまま自社NPVへ足してはいけない。また、通常NPVに水道料金の節約が既に入っているなら、同じ節約額を追加しない。<b>対策の費用・便益は「対策あり」と「対策なし」の差で、同じ期間にそろえる。</b></p>
+<p><span class="badge product">PRISMとの接続</span> 価値の算定画面で金額と前提を確認し、対策と判定画面で承認基準と照らす。上の200〜600万円は説明用の範囲で、統計的なP5〜P95とは定義していない。PRISMのレンジの作り方と近似の制約は7・9章で学ぶ。</p>
+</section><section id="c4"><h2>4　評価する対象と係数を決める</h2>
+<p><span class="badge">一般論</span> Natural Capital Protocolの流れは、<b>Frame（目的）→ Scope（範囲）→ Measure &amp; Value（測定・評価）→ Apply（利用）</b>。まず判断したい案件を決め、その案件を左右する自然関連の課題を選ぶ。</p>
+<ol><li><b>判断と利用者を決める：</b>何の投資・調達・開示について、誰が、いつまでに判断するか。</li><li><b>対象を洗い出す：</b>直接操業とバリューチェーン、拠点・流域、依存するサービス、自然への負荷を挙げる。</li><li><b>重要性を確認する：</b>影響の重大性・広がり・回復困難性、依存度、財務規模、関係者への影響から優先順位を付ける。定性的に重大な課題を、金額を出せない理由だけで除外しない。</li><li><b>比較条件を固定する：</b>反実仮想、期間、対象人口、機能単位、正負の扱いを決める。</li><li><b>物理量と係数を対応させる：</b>一次データ・モデル・係数の適用条件を確認し、合わなければ追加調査または未評価にする。</li><li><b>記録して見直す：</b>選択理由、未評価・除外理由、感度の大きい前提を残す。</li></ol>
+<div class="table-wrap"><table><caption>実務で取り違えやすい言葉</caption><thead><tr><th>言葉</th><th>意味・注意</th></tr></thead><tbody>
+<tr><td>ベースライン／反実仮想</td><td>比較の基準／事業や対策がなかった場合の状態。単なる前年との差には、天候や他社の行動も混じる</td></tr>
+<tr><td>追加性／帰属</td><td>介入がなければ起きなかった追加の変化／変化をどの主体・行為に帰するか。両者は関連するが同義ではない</td></tr>
+<tr><td>ストック／フロー</td><td>生態系資産／そこから一定期間に生じるサービス。資産価値と年間サービス価値を足さない</td></tr>
+<tr><td>総価値・平均価値／限界価値</td><td>全体や単位当たり平均／追加的な変化の価値。平均の円/haを大規模開発に線形適用できるとは限らない</td></tr>
+<tr><td>機能単位／配分</td><td>製品・サービスを比較する基準／共通工程の負荷を各製品に割り振る方法。質量配分と経済配分では結果が変わる</td></tr>
+<tr><td>評価済み／未評価／対象外</td><td>算定した／不足により算定できない／目的・境界に照らして除外した。<b>未評価はゼロではない</b></td></tr></tbody></table></div>
+<h3>係数を採用する前の確認表</h3>
+<div class="table-wrap"><table><thead><tr><th>確認</th><th>具体例</th></tr></thead><tbody>
+<tr><td>物理量の定義・単位</td><td>取水と消費水、kg-Nとkg-NOₓ、排出と廃棄物移動、土地の占有ha・年と転換ha</td></tr>
+<tr><td>影響が起きる条件</td><td>水源・流域、排出先（大気／水／土壌）、人口・曝露、生態系の状態</td></tr>
+<tr><td>何を価値に含むか</td><td>健康、生態系サービス、生物多様性、非利用価値。上流サービスと最終便益の重複</td></tr>
+<tr><td>価値概念と期間</td><td>厚生か企業費用か、年間額か一回限りか、将来被害の現在価値を係数が既に含むか</td></tr>
+<tr><td>通貨・価格年・補正</td><td>排出条件の年と価格年の区別。PPP・所得・物価補正が適切か、既に補正済みか</td></tr>
+<tr><td>出典・版・利用条件</td><td>原典の表・行・単位、係数ID、ライセンス。出典名だけでは再現できない</td></tr>
+<tr><td>不確実性と採否</td><td>分布の根拠、地域移転の妥当性、利用目的に足るか。採用・限定利用・不採用を理由と記録</td></tr></tbody></table></div>
+<p>例えば、取水量のすべてが消費されるとは限らない。排水として同じ流域へ戻る量・時期・品質と、手法の消費水の定義を確認する。排水量を機械的に引けば常に正しいわけでもない。</p>
+<p>費用ベースの代替値では、必要な機能・品質を代替できるか、実行可能で合理的な代替案かを確認する。<b>復元にかかる費用と、失われた便益の価値は一致しない。</b></p>
+<p class="source">参照：<a href="#s-protocol">Natural Capital Protocol（Scope・Measure &amp; Value）</a>。</p>
+</section><section id="c5"><h2>5　枠組み・評価手法・データベースを使い分ける</h2>
+<h3>分類・開示の枠組み</h3>
+<div class="table-wrap"><table><thead><tr><th>参照先</th><th>何に使うか</th><th>覚えること</th></tr></thead><tbody>
+<tr><td><a href="#s-tnfd">TNFD</a><br>自然関連財務情報開示タスクフォース</td><td>自然関連の依存・影響・リスク・機会（DIRO）の評価と開示</td><td>依存＝自然から事業へ、影響＝事業から自然へ。リスクは物理・移行に加えシステミックリスクも扱う。機会は資源効率や市場等の正の可能性として別に整理</td></tr>
+<tr><td><a href="#s-ipbes">IPBES</a><br>生物多様性及び生態系サービスに関する政府間科学–政策プラットフォーム</td><td>自然の変化の要因と、多様な価値の理解</td><td>土地・海域利用変化、直接採取、気候変動、汚染、侵略的外来種。影響の順位は地域・生態系で異なる。貨幣化できない価値もある</td></tr>
+<tr><td><a href="#s-seea">SEEA EA</a><br>国連の環境経済勘定体系―生態系会計</td><td>生態系の範囲・状態・サービス・資産を勘定として記録</td><td>物理勘定と貨幣勘定を分ける。交換価値と厚生価値の違いを理解する参照先</td></tr></tbody></table></div>
+<p><b>物理リスク</b>は自然の劣化・変化による操業等へのリスク、<b>移行リスク</b>は政策・市場・技術等の変化への不適合によるリスク。<b>システミックリスク</b>は、生態系や金融システム全体の不安定化・連鎖的な機能不全に関わる。</p><p>TNFDの<b>LEAP</b>は Locate（自然との接点を特定）→ Evaluate（依存・影響）→ Assess（リスク・機会）→ Prepare（対応・報告）の評価手順。開示項目そのものではない。自然の状態・影響ドライバー・生態系サービスは、DIROを理解する因果経路の要素である。</p>
+<p><b>財務的重要性</b>は企業の見通し等に関わる重要性、<b>インパクトの重要性</b>は人・環境への影響の重要性。<b>ダブルマテリアリティ</b>は両方の観点で評価する考え方。TNFD・ISSB/SSBJ・ESRSの扱いを一律に説明せず、採用する開示基準の定義を確認する。</p>
+<h3>貨幣化の方法</h3>
+<div class="table-wrap"><table><thead><tr><th>方法</th><th>使う情報</th><th>主な限界</th></tr></thead><tbody>
+<tr><td>市場価格・生産関数</td><td>取引価格、生態系サービスが生産量を変える関係</td><td>売上総額のすべてを自然の価値としない。他の投入費用や寄与も考慮</td></tr>
+<tr><td>顕示選好法</td><td>行動から選好を推定。旅行費用法、ヘドニック価格法など</td><td>訪問や不動産価格等に表れない価値は捉えにくい</td></tr>
+<tr><td>表明選好法</td><td>調査で尋ねる。仮想評価法（CVM）、選択実験（DCE）</td><td>非利用価値も対象にできるが、質問・標本・仮想状況の設計に左右される</td></tr>
+<tr><td>費用ベース</td><td>代替・復元・防止に必要な費用</td><td>厚生価値の推計と同一ではない。用途と代替条件を確認する</td></tr>
+<tr><td>価値移転（便益移転）</td><td>既存研究の単位値や推定関数を別の対象に適用</td><td>地域、所得、サービス、受益者、規模の適合性が必要</td></tr></tbody></table></div>
+<p>総経済価値（TEV）は、直接・間接の利用価値、オプション価値、存在・遺贈などの非利用価値を整理する考え方。ただし、自然の内在的価値や人と自然との関係的価値をすべて包含するものではない。</p>
+<h3>主な参照先とPRISMの実装は同じ範囲ではない</h3>
+<div class="table-wrap"><table><thead><tr><th>参照先</th><th>性格</th><th>実務上の読み方／PRISM</th></tr></thead><tbody>
+<tr><td>ESVD</td><td>生態系サービス価値の研究データベース</td><td>原典候補を探す。平均のInt$/ha/年をそのまま対象地へ掛けない。PRISMで独立した汎用ESVDプラグインは確認されていない</td></tr>
+<tr><td>IFVI / VBA</td><td>インパクト会計の一般・トピック別方法論</td><td>全方法論が実装済みという意味ではない。PRISMは水消費の4内訳を扱う（7章）</td></tr>
+<tr><td>LIME3</td><td>特性化→被害評価→統合化を行うライフサイクル影響評価手法</td><td>人間健康・社会資産・生物多様性・一次生産を扱う。PRISMには水、汚染、廃棄物、土地利用のプラグインがある。入力と係数の対応範囲に制限</td></tr>
+<tr><td>CE Delft</td><td>排出の環境価格ハンドブック</td><td>EU27版v1.1は<b>2019年の排出条件・2021年価格</b>。基本は損害費用、一部は削減費用。PRISMの登録プラグインに汎用CE Delft手法は確認されていない</td></tr></tbody></table></div>
+<p>CE Delftのlower／central／upperはハンドブックが設定する評価値の範囲で、PRISMのP5／P50／P95と同義ではない。企業・LCAで中心値を使う想定があっても、地域への適用可能性は別途確認する。</p><p>学習用の原典を知っていることと、その全係数をPRISMが利用できることは別。対象の手法・版・物理量・地域・利用条件ごとに確認する。</p>
+<p class="source">参照：<a href="#s-esvd">ESVD</a>、<a href="#s-ifvi">IFVI</a>、<a href="#s-lime">LIME3</a>、<a href="#s-ce">CE Delft §2.3・4.3</a>、<a href="#p-methods">PRISM登録手法</a>。</p>
+</section><section id="c6"><h2>6　PRISMで何を入れ、何を得るか</h2>
+<p><span class="badge product">PRISMの実装</span> PRISMは、環境データを複数の手法で評価し、<b>値の差・使う値の選択・判断基準との関係・開示の根拠</b>を記録につなぐプロダクト。環境データの計測や、投資の最終承認を自動で代行するものではない。</p>
+<div class="table-wrap"><table><caption>画面と仕事の対応（M番号は内部モジュール名。暗記不要）</caption><thead><tr><th>画面・工程</th><th>人が用意・判断するもの</th><th>処理と成果物</th></tr></thead><tbody>
+<tr><td>拠点データの登録<br><code>/sites</code>・M1</td><td>拠点・位置、業種、期間、環境負荷・利用量、出典。CSVまたは個別登録</td><td>拠点と自然との接点、入力の不備・除外理由。PRTR（化学物質の排出・移動量）・廃棄物・土地利用の専用取込もある</td></tr>
+<tr><td>評価対象の絞り込み<br><code>/assessment</code>・M2</td><td>重要課題と詳細評価の対象を確認・変更</td><td>優先順位、概算／詳細評価、詳細評価に進めなかった理由</td></tr>
+<tr><td>価値の算定<br><code>/valuation</code>・M3/M4<br>詳細分析 <code>/analysis</code></td><td>適用条件、比較結果を確認し、用途に合う代表値と理由を選ぶ</td><td>手法別の金額・レンジ・対象外項目、差の数値分析または分析できない理由</td></tr>
+<tr><td>財務への影響<br><code>/financial-bridge</code>・M5</td><td>営業利益、既払費用、内部化シナリオ、割引率、減損検討の基準等</td><td>企業費用側の参考指標と、別表示の社会的費用。会計認識の判断とは別</td></tr>
+<tr><td>対策と判定<br><code>/decision</code>・M6</td><td>通常NPV、承認基準、対策の回避費用・期間、判断への反映先</td><td>調整後NPVの範囲、基準をまたぐ／またがない／保留、追加確認の論点</td></tr>
+<tr><td>開示への反映<br><code>/disclosure</code>・M7</td><td>既存PDF（任意）、抽出内容の確認、記載修正・追加証拠の判断</td><td>社内レビュー用の下書き、根拠不足・範囲不一致等の検出</td></tr>
+<tr><td>記録<br><code>/ledger</code>・M8</td><td>変更理由、更新された入力・版を確認</td><td>前提と選択の履歴、計算結果と参照版、再計算照合の情報</td></tr></tbody></table></div>
+<p>画面は入力・結果への入口で、すべての係数や補正・シナリオがその場で編集できるという意味ではない。現段階では設定データ・デモ既定値を使う項目もあるため、案件に適用する入力の由来を確認する。</p><h3>担当者間で渡すもの</h3>
+<p><b>拠点・環境担当</b>が物理量と出典をそろえ、<b>サステナビリティ担当・外部専門家</b>が対象と係数を検討する。<b>財務・事業担当</b>が自社負担への経路、通常NPV、承認基準を確認し、<b>意思決定者</b>が対策と反映先を決める。<b>開示担当</b>は、同じ記録から主張できる範囲を確認する。担当を分けても評価対象・期間・レコードの対応を維持する。</p>
+<h3>優先順位は「標準が決めた重要性」ではない</h3>
+<p>感応度は、自然の状態や保全上の条件に照らした影響の受けやすさ等を表す評価。現在のM2は、感応度・財務規模・不確実性・開示必須性の4項目を同時に評価する対象群の中での相対順位（百分位順位）に直して等重みで加算し、既定で上位20%を詳細評価に進める。手動変更もできる。<b>20%や重みはPRISMの設定で、TNFDやIPCCの規定ではない。</b>相対順位なので、対象拠点が増えれば順位も変わりうる。権利・法令・重大な生態系影響の確認を、この順位だけで代替しない。</p>
+<p class="source">実装根拠：<a href="#p-flow">画面・パイプライン</a>、<a href="#p-assessment">評価対象の絞り込み</a>。</p>
+</section><section id="c7"><h2>7　PRISMの内部計算：物理量から金額へ</h2>
+<p><span class="badge product">PRISMの実装</span> 基本の流れは、<b>物理量の定義確認 → 適用手法と係数の選択 → 手法固有の計算 → 必要な換算・補正 → 不確実性 → 結果と計算過程の保存</b>。手法ごとに、何が計算に含まれているかを確認する。</p>
+<div class="table-wrap"><table><caption>代表的な計算の読み方</caption><thead><tr><th>手法</th><th>計算の骨格</th><th>結果が意味するもの</th></tr></thead><tbody>
+<tr><td>代替費用法（水）</td><td>物理量 × 企業定義の代替調達単価</td><td>代替調達の費用モデル。PRISMではexchange側。実際の追加支出かは別途確認</td></tr>
+<tr><td>LIME3</td><td>対応する物理量 × 係数。係数が統合化済みか、被害・重みを分けるかはデータに従う</td><td>対象となる保護対象への被害を貨幣評価。物質や土地分類が未対応なら推定で埋めない</td></tr>
+<tr><td>IFVI水</td><td>物理量 × 4種類のvalue factor（貨幣化係数）を別々に計算</td><td>栄養・疾病・生態系サービス・将来の水アクセス費用。PRISMでは最初の3つをwelfare、アクセスをexchangeに分類</td></tr>
+<tr><td>GHG</td><td>排出量 × 対応する炭素価格</td><td>社会的炭素費用と企業負担側の価格を区別。tCO₂eだけでは自動的に単一の価格に決まらない</td></tr>
+<tr><td>企業提供の費用（汚染・廃棄物・土地）</td><td>企業の総費用・既払額・確認済み増分便益等を入力として保持</td><td>厚生評価額を企業費用へ変換せず、企業提供の別の根拠を使う</td></tr></tbody></table></div>
+<p>IFVI水の集計の再現では、アクセス費用＋MAX（栄養、疾病、生態系サービス）を用いる。<b>4つの内訳を単純に足す方式ではない。</b>この集計の再現と、企業の財務・投資判断にどの内訳を接続するかは別の処理である。</p>
+<div class="note"><b>水の入力に残る重要な制約</b><p>現在のIFVI水アダプターには、入力の取水量を手法が要求する消費水量と同等とみなす仮定が記録されている。拠点別補正（Eq.3–5）も未実装と受入資料にある。<b>取水量を入れれば方法論に完全準拠する、と説明しない。</b>実務では消費水量・水源・補正の適合性を専門家と検証する。</p></div>
+<h3>通貨・地域・時点の補正</h3>
+<p>PRISMには、通貨換算と、PPP・所得比の弾力性調整・デフレータ・相対価格変化・面積スケーリングを記録する処理がある。現地通貨の企業費用など、地理補正を省略する手法もある。<b>すべての補正を掛ければ精度が上がるわけではない。</b>係数が既に地域調整済みなら重ねず、企業の実支出の換算とWTPの国際移転も分ける。</p>
+<h3>金額の幅はどう作るか</h3>
+<p><b>P5・P50・P95</b>は、仮定した分布の下で小さい順に並べたときの5・50・95%地点。P50は中央値。P5〜P95はモデルの下で中央90%の範囲であり、真の値を90%の確率で保証するものでも、すべての不確実性を含む信頼区間でもない。</p>
+<p>モンテカルロ計算は、仮定した分布から入力を繰り返し抽出して結果の幅を調べる方法。現在のM3では、パラメータと移転誤差を独立な乗法誤差として合成し、既定10,000回のモンテカルロ計算で分位点を得る。適合度A/B/Cに応じた移転誤差の幅や、一部プラグインの分布パラメータには製品内の仮定がある。原典の実測精度と同一視しない。</p>
+<p>LIME3の汚染・廃棄物・土地利用プラグインでは、確率分布が入手できない場合を「不確実性情報なし」として扱う。レンジがないことは、高精度や影響ゼロを意味しない。入力欠測、公表ゼロ、計算結果ゼロ、被覆外も区別して読む。</p>
+<p><b>保存する単位は評価レコード（ValuationRecord）。</b>物理入力、手法と版、価値概念、中心値・範囲、対象外項目、計算過程への参照をひも付ける。金額だけをコピーすると、選択理由と適用条件が失われる。</p>
+<details><summary>発展：PRISMの適合度と誤差幅を正しく読む</summary><p>生態学的条件・社会経済条件・サービス定義・時点・空間規模の5項目を幾何平均し、0.8以上をA、0.5以上をB、それ未満をCとする。対応する0.20／0.40／0.75は<b>変動係数（標準偏差÷平均）</b>として使う。「±20%の90%区間」の意味ではない。境界と幅は暫定の製品設計で、IPCC Tier 1/2/3や正式な品質認証ではない。</p></details>
+<p class="source">実装根拠：<a href="#p-methods">手法・換算</a>、<a href="#p-uncertainty">不確実性・適合度</a>、<a href="#p-acceptance">受入資料</a>。方法論参照：<a href="#s-ifvi-water">IFVI水</a>。</p>
+</section><section id="c8"><h2>8　PRISMの内部計算：手法間の差を説明する</h2>
+<p><span class="badge product">PRISMの実装</span> 同じ物理量でも、価値概念、被害経路、被覆範囲、地域・時間の前提が違えば金額は変わる。PRISMは、比較できる条件を確認し、<b>数値で説明できる差・理由は分かるが数値化できない差・未解明の差</b>を分ける。</p>
+<ol><li><b>同じ対象か：</b>拠点、期間、物理量、水源、排出先、単位・価格年等を照合する。同じ「水」でも、表層水と地下水、取水と消費水は無条件に同じではない。</li><li><b>比較するための式があるか：</b>登録済みの比較レシピ（どの前提をどう入れ替えられるかの規則）と、再計算できる計算トレースを使う。名前や結果だけから原因を推測しない。</li><li><b>前提を入れ替えて再計算：</b>可能な変更順序を考慮し、Shapley値で各要因の寄与を配分する。</li><li><b>残差と停止理由を示す：</b>説明しきれない差を勝手に既知要因へ割り当てず、必要なデータ・式を示す。</li></ol>
+<p><b>Shapley値</b>は、前提を入れ替える順序によって寄与が変わる問題に対して、各順序での増分を平均する考え方。<b>採用したモデル・要因の下での数値配分であり、現実の因果効果を証明するものではない。</b>同じ人間健康でも、栄養不良と水系疾病の経路は異なる。</p>
+<div class="example"><b>架空例：金額差を読む</b><p>同じ意味で比較できるB＝100万円、A＝160万円。入れ替え可能な前提を変更した再計算値が145万円なら、数値で配分できた寄与の合計は45万円、残差は15万円。被害経路が違うと分かっていても、その差が15万円だと確定したことにはならない。</p></div>
+<p>すべて正の値なら倍率を対数で分解し、ゼロを含むなどの場合は条件を満たせば金額差を分解する。比較不能、式不足、意味の異なる符号等は停止理由になる。<b>分析が止まる・残差が大きいこと自体が、次に何を調べるかの情報</b>になる。</p>
+<div class="note"><b>現在の実証範囲</b><p>水関連の比較レシピは登録されているが、どの手法ペア・カテゴリでも分解できるわけではない。2026年9月の受入・実証資料では、同資料で検証された手法間ペアはゼロ寄与または停止で、非ゼロ寄与が示されたのは同一手法内の変種。物理量もデモ設定を含む。<b>「実データで任意の手法差を説明できた」「すべての差を完全分解できる」とは言えない。</b></p></div>
+<p>代表値は、最安値や平均を機械的に採るのではなく、目的、係数の適合性、対象範囲、意思決定への利用可能性から選び、理由を残す。手法間の最大・最小を束ねた範囲と、同一手法内のP5〜P95も区別する。</p>
+<p class="source">実装根拠：<a href="#p-divergence">比較・Shapley・残差</a>、<a href="#p-validation">実証レポート</a>。</p>
+</section><section id="c9"><h2>9　PRISMの内部計算：財務と承認基準へつなぐ</h2>
+<h3>社会的な損失から企業費用が自動的に決まるわけではない</h3>
+<p><span class="badge">一般論</span> 依存は、<b>自然の供給変化 → 操業停止・歩留まり等 → 売上・調達費・設備投資 → キャッシュフロー</b>の順に検討する。企業から自然への影響は、規制、課金、許認可、訴訟、調達条件等を介して財務に及ぶ。自然の損害額に一律の割合を掛ければ自社負担になる、という一般則はない。</p>
+<h3>財務画面の2つの表示</h3>
+<p><span class="badge product">PRISMの実装</span> 財務接続には、企業費用側のブリッジと、厚生価値側の社会的費用ビューがある。ブリッジは、元の数値から調整を足し引きする内訳表示。社会的費用ビューは別表示で、企業利益の計算へ合算しない。</p>
+<div class="table-wrap"><table><caption>製品内の名称・実装式と、解釈上の条件</caption><thead><tr><th>名称</th><th>現在の計算</th><th>読み方</th></tr></thead><tbody>
+<tr><td>未内部化コスト</td><td>企業費用側の総額 − 内部化済み費用</td><td>内部化＝外部影響等が自社の支払・費用として現れること。引く既払額が同じ対象・期間の費用か確認</td></tr>
+<tr><td>自然債務</td><td>Σ［シナリオ別未内部化コスト × 設定確率 ÷ (1＋割引率)<sup>時期</sup>］</td><td>PRISM独自の非GAAP参考指標。会計上の負債・引当金ではない。設定したシナリオ・時点の加重現在価値</td></tr>
+<tr><td>自然調整後営業利益</td><td>報告営業利益 − 依存リスク正常化調整 − 将来内部化見込みコスト ＋ 確認済み増分便益</td><td>現在のパイプラインでは依存リスク正常化調整は0、将来内部化見込みコストに自然債務を接続する</td></tr></tbody></table></div>
+<div class="note"><b>この表示を「将来の年間利益予測」と説明しない</b><p>現在の実装は、期間を割り引いた自然債務を報告営業利益から控除する。年次損益と現在価値の期間基準が自動的に一致するわけではないため、<b>会計利益の予測や減損計算の完成値として扱えない</b>。依存リスクの調整が0なのも、リスクが存在しないという意味ではない。</p><p>自然債務の関数自体は、毎年の発生額を自動展開する年金計算ではない。一回限りか反復する費用か、確率が何を表すか、シナリオが排他的か、名目・実質と割引率が整合するかを別途確認する。係数に含まれる将来被害の割引と、企業費用の発生時期の割引も区別する。</p></div>
+<h3>対策の判定は、通常NPVに追加の回避費用を接続する</h3>
+<div class="formula">自然調整後NPV ＝ 通常NPV ＋ Σ［追加で回避できる企業費用<sub>t</sub> ÷ (1＋割引率)<sup>t</sup>］</div>
+<p>通常NPVには投資額と通常の収支を入れ、そこにまだ含まれない回避費用を足す。社会的便益を企業収益として足さない。複数の対策を組み合わせる場合は、代替案同士の重複や排他性を人が確認する。</p>
+<div class="table-wrap"><table><thead><tr><th>承認基準0円、調整後NPVの例</th><th>PRISMの判定</th><th>実務での意味</th></tr></thead><tbody><tr><td>−100〜＋300万円</td><td>またぐ</td><td>前提によって数値上の承認条件の充足が変わりうる。主要な前提を確認する</td></tr><tr><td>＋100〜＋300万円</td><td>またがない</td><td>検討した範囲では全体が基準以上。法令・権利・他の事業条件も確認して判断</td></tr><tr><td>−500〜−100万円</td><td>またがない</td><td>検討した範囲では全体が基準未満。「またがない＝承認」ではない</td></tr><tr><td>承認基準が未入力</td><td>保留</td><td>仮の基準で結論を出さず、意思決定者に基準を確認</td></tr></tbody></table></div>
+<p>「減損リスク」の表示も、企業が入力した基準を自然債務の損失額が上回るかの確認で、減損額の算定ではない。信用指標の参考比較から格付・資本コストの変化を予測する機能でもない。</p><p>端点と基準が等しい場合も「またぐ」に分類する。<b>現在の判定は調整後レンジと基準の位置関係を返すもので、通常NPVから意思決定が実際に変わったことを自動で証明する機能ではない。</b>変更を説明するなら、通常NPVの位置、調整後の位置、実際の採否を並べて確認する。</p>
+<details><summary>発展：NPVレンジの近似と、追加調査の判断</summary><p>現在のM6は、参照する評価レコードのP5/P50、P95/P50の比を各回避費用へ掛け、割引後に合算する近似。対策全体の確率分布をモンテカルロで再計算する方式ではなく、合計の厳密な分位点ではない。相関、通常NPV自体の不確実性、P50が0またはレンジ欠落の場合の適用可能性を確認する。</p><p>追加調査の主要前提の表示は、参照レコードの相対レンジ幅が最大のものを選び、その不確実性の内訳を使う。金額で重み付けしたNPV感度の厳密な順位ではないため、対策の費用規模も確認する。</p><p>「またがない」ことは、確認した範囲でその前提の精緻化が数値判定を変えにくいという意味。未評価の重大影響や未検討シナリオまで無視して、調査全体を打ち切る根拠にはならない。</p></details>
+<h3>判定をどの業務に反映するかも選ぶ</h3><p>PRISMには、参考値として稟議に添える、稟議のNPV判定式へ反映する、予算へ割り当てる、調達契約の更新条件に組み込む、という反映先を記録する仕組みがある。参考表示だけで終えるか、実際の判断ルールに結び付けるかを明確にするためである。<b>選択・記録しただけで、外部の稟議・予算・契約が自動更新されるわけではない。</b></p><p class="source">実装根拠：<a href="#p-financial">財務接続</a>、<a href="#p-decision">NPV・判定</a>。</p>
+</section><section id="c10"><h2>10　成果物、実務での使い方、PRISMの強み</h2>
+<div class="table-wrap"><table><caption>出力が業務成果につながるまで</caption><thead><tr><th>成果物</th><th>使う場面</th><th>期待できる成果と確認方法</th></tr></thead><tbody>
+<tr><td>評価レコードと差の分析</td><td>社内・コンサル間で金額が食い違ったとき</td><td>比較条件と未解明点をそろえ、追加調査を具体化する。説明に要する時間や再調査内容を確認</td></tr>
+<tr><td>判断記録（DecisionRecord）</td><td>設備投資、調達契約、拠点計画</td><td>承認基準に効く前提を絞る。代表値・対策・稟議の変更と理由を記録して効果を検証</td></tr>
+<tr><td>開示下書き・根拠照合結果</td><td>報告書作成・社内レビュー</td><td>主張と対象範囲・期間・根拠を照らす。修正された主張や不足証拠の件数を確認</td></tr>
+<tr><td>前提台帳・版・再計算情報</td><td>年度更新、担当者交代、保証対応</td><td>どの入力・係数・選択に基づいたか追跡する。再現・説明にかかる手戻りを確認</td></tr></tbody></table></div>
+<div class="example"><b>3章の節水案件を、実務で引き渡すなら</b><p>環境担当が消費水削減量と出典を提出し、専門家が係数・未評価影響を確認する。財務担当は通常NPVと重複しない回避費用の根拠をそろえる。判断記録には「基準0円をまたぐため代替水調達費を追加確認」と残し、担当と期限を決める。開示下書きには対象拠点・期間・評価済み範囲だけを記載し、採用した係数と理由を台帳へひも付ける。これは想定する運用例で、実顧客での成果ではない。</p></div><h3>開示画面で確認できること</h3>
+<p>PDFからの主張抽出にAIを使い、抽出したカテゴリ・期間・範囲等の構造化情報をルールで照合する。確認対象は、根拠なし（G1）、根拠薄弱（G2）、範囲不一致（G3）、期間不一致（G4）、選択的開示（G6）。<b>原文の真偽を全面的に判定したり、算定内容の正しさを保証したりするものではない。</b>抽出と照合範囲を人が確認する。</p>
+<p>下書きはレコードからテンプレートで作る。現在の社内レビュー用出力を、SSBJ・TNFD等に完全準拠した提出書類と説明しない。基準別の網羅的マッピング、主張の定義不一致や相殺・将来約束等のすべての検証は、確認済み実装の範囲に含まれない。</p>
+<h3>強みとして説明できること</h3>
+<p><b>PRISMの設計上の強みは、算定・比較・判断・開示・記録を同じ根拠でつなぐこと。</b>単一の金額を出すだけでなく、「なぜ違うか」「どの前提を追加確認するか」「今回の承認基準に関係するか」を説明する構成にある。比較できない理由と残差を残すことも、この説明を支える。</p>
+<p>ただし「競合にはない」「判断を必ず改善する」「環境価値の正解が分かる」とは主張しない。顧客での時間短縮・判断変更・説明品質の改善は、これから測定すべき業務成果。環境面の成果まで主張するには、対策の実施、物理量の改善、反実仮想との差、負荷の他地域への移転等も確認する必要がある。</p>
+<div class="table-wrap"><table><caption>現在の到達点（2026年9月22日の確認）</caption><thead><tr><th>段階</th><th>確認できたこと</th><th>残る条件</th></tr></thead><tbody>
+<tr><td>技術実装</td><td>M1〜M8の処理・画面、比較トレース・停止理由等のコードと既存検証記録</td><td>本書では製品全体の動作テストを再実施していない。データ・接続・運用の制約あり</td></tr>
+<tr><td>実データ実証</td><td>実係数を含む検証と負例の記録</td><td>実物理量による複数対象での手法間非ゼロ寄与、1社実データ通し受入は未完了</td></tr>
+<tr><td>業務価値</td><td>利用者検証の計画・様式</td><td>実際の代表値選択・追加調査・判断変更の確認は未完了</td></tr>
+<tr><td>本番利用</td><td>一部の取込・保存・API等</td><td>住所解決・空間データの実接続、利用データと手法ごとの商用条件、認証・運用等の確認が必要</td></tr></tbody></table></div>
+<p>台帳やハッシュは、選択・版・変更の追跡や再計算照合を支える。入力の真実性、第三者保証の取得、あらゆる管理者操作からの完全な改ざん防止を、それだけで証明するものではない。</p>
+<p class="source">実装根拠：<a href="#p-disclosure">開示</a>、<a href="#p-ledger">台帳</a>、<a href="#p-acceptance">受入資料</a>。強みと成果指標の説明は本資料の整理。</p>
+</section><section id="c11"><h2>11　専門家との会話で確認すること</h2>
+<p>手法名や数値を暗記するより、<b>その値を今回の目的に使えるか</b>を確認する。次の順で聞くと、評価設計から結果の利用まで話がつながる。</p>
+<div class="table-wrap"><table><thead><tr><th>確認したいこと</th><th>そのまま使える質問</th><th>回答で確認する材料</th></tr></thead><tbody>
+<tr><td>目的・価値概念</td><td>「この金額は社会の厚生損失ですか、自社の追加費用ですか。どの意思決定に使いますか」</td><td>目的、受益者・被害者、企業負担への経路</td></tr>
+<tr><td>境界・反実仮想</td><td>「対策がない場合をどう置きましたか。上流・下流と、何年先まで含みますか」</td><td>比較シナリオ、時間・地理・組織境界</td></tr>
+<tr><td>物理量の対応</td><td>「これは取水量ですか消費水量ですか。係数が想定する量と一致していますか」</td><td>定義、単位、水源、排出媒体、測定・推計方法</td></tr>
+<tr><td>手法・被覆</td><td>「どの被害経路と保護対象を含み、何を含みませんか。金額の違いは問いの違いですか」</td><td>係数の構成、対象外項目、二重計上防止</td></tr>
+<tr><td>移転・換算</td><td>「この地域に適用できる根拠と、価格年・PPP・所得補正の扱いを教えてください」</td><td>原典研究、対象地との適合性、補正の重複の有無</td></tr>
+<tr><td>不確実性</td><td>「この幅は分位点、シナリオ幅、手法間差のどれですか。分布と相関は何に基づきますか」</td><td>原典の分布か製品の仮定か、含まれない不確実性</td></tr>
+<tr><td>財務・意思決定</td><td>「通常NPVに既に含む費用は除きましたか。どの前提を変えると承認基準をまたぎますか」</td><td>費用の年次列、割引率、閾値、通常NPVとの比較</td></tr>
+<tr><td>開示・再現</td><td>「第三者が同じ結果を再計算するために、何を保存していますか。主張の範囲に未評価はありますか」</td><td>入力、係数ID・版、式、選択理由、未評価・除外一覧</td></tr></tbody></table></div>
+<h3>誤解を生まない言い換え</h3>
+<ul><li>「自然の価値は1億円です」→「対象・期間・価値概念を限定した評価額で、未評価項目があります」。</li><li>「手法Aの方が正確です」→「この目的と地域にはAが適合します。Bとの被覆・前提の違いはここです」。</li><li>「PRISMで比較不能でした」→「対象／経路／再計算式の条件がそろわず、数値分解を停止しています」。</li><li>「自然債務を負債計上します」→「PRISMのシナリオ参考指標です。会計認識は別に検討します」。</li><li>「判定がまたがないので承認です」→「今回の範囲が基準の上か下かを確認し、他の条件も含めて判断します」。</li></ul>
+<div class="note"><b>会議の最後に残す5点</b><p>①今回の意思決定と価値概念　②採用する入力・係数と理由　③未評価・比較不能・残差　④追加調査の担当と期限　⑤何が変わったら再評価するか。</p></div>
+</section><section id="c12"><h2>12　確認問題：説明できれば、次の議論に進める</h2>
+<p>解答を開く前に、自分の言葉で理由まで説明する。数値の暗記ではなく、使える条件と限界を確認する。</p>
+<details class="quiz"><summary>1. 同じ拠点の水利用を2手法で計算すると10倍違った。まず何を確かめる？</summary><p>同じ物理量・水源・期間・通貨価格年か、厚生と企業費用を混ぜていないか、同じ被害経路を含むかを確認する。差だけで精度の優劣は決めない。PRISMの比較レシピ・トレースで数値分解できる範囲も確認する。</p></details>
+<details class="quiz"><summary>2. 消費水用の係数しかない。取水量10万m³をそのまま掛けてよい？</summary><p>無条件には使えない。消費水の定義、戻り水、水源・時期・品質を確認する。やむを得ず同等と仮定する場合は、その根拠と影響を示す。PRISMの現行アダプターに仮定の記録があっても、妥当性が自動的に確認されたことにはならない。</p></details>
+<details class="quiz"><summary>3. 社会的損失が1億円なので、来年の営業利益から1億円を引ける？</summary><p>引けない。社会的損失と自社費用は別。規制・調達・操業等の経路を別途見積もる。PRISMのexchange分類も実支出を保証せず、自然調整後利益の現行表示には期間基準の確認が必要。</p></details>
+<details class="quiz"><summary>4. 土地転換の50年現在価値とNOₓの1年分を、同じ通貨にすれば足せる？</summary><p>通貨換算だけでは不十分。目的・価値概念・対象期間・計上基準・重複をそろえる。土地の年間損失と当年排出の影響を別表示するか、両者を同じ評価期間の現在価値へ組み直す。</p></details>
+<details class="quiz"><summary>5. PRISMで分析の残差が100%だった。何も分からなかったということ？</summary><p>数値的な原因配分はできていないが、比較条件、既知の定性差異、欠けている式やデータは整理できる。残差を恣意的に既知要因へ配分しない。次に取る資料を決める材料にする。</p></details>
+<details class="quiz"><summary>6. 基準0円、NPVレンジ−500〜−100万円。「またがない」の意味は？</summary><p>検討した全範囲が基準未満。承認を意味しない。基準以上の場合も同じラベルになるため上下を確認する。通常NPVとの比較をしなければ判断が「変わった」とも言えない。</p></details>
+<details class="quiz"><summary>7. P5〜P95なら「90%の確率で真の値がここに入る」と言える？</summary><p>その説明は避ける。指定した分布・入力・モデルの下での中央90%の範囲であり、モデル選択や未知の影響をすべて含むわけではない。M6のNPVレンジはさらに近似計算である。</p></details>
+<details class="quiz"><summary>8. ESVD・IFVI・LIME3・CE Delftはどれも「原単位データベース」？</summary><p>ESVDは研究データベース、IFVIは方法論群、LIME3はLCIA手法、CE Delftは環境価格ハンドブック。工程上の役割が異なる。PRISMへの実装範囲も別に確認する。</p></details>
+<details class="quiz"><summary>9. 開示画面で根拠充足なら、そのまま外部提出してよい？</summary><p>照合した項目の範囲で根拠が対応したという意味。原文の抽出、物理データの真実性、評価の妥当性、基準上の網羅性を人が確認する。下書きや台帳は保証意見ではない。</p></details>
+<details class="quiz"><summary>10. PRISMを初めて聞く同僚に、強みと現在の限界を説明する。</summary><p>「複数手法の評価と差の理由を確認し、選んだ値を承認基準・開示・記録につなぐ仕組みです。技術実装は進んでいますが、任意の手法差を完全分解できるわけではなく、実データでの通し検証や利用者の判断改善は未確認です」と説明できる。</p></details>
+<p class="meta">到達の目安：1〜4で評価設計、5〜7でPRISMの結果解釈、8〜10で専門家・社内への説明を確認する。分からなかった箇所だけ本文に戻る。</p>
+</section><section id="app-a"><h2>付録A　通しの計算例と記録様式</h2>
+<p><span class="badge example">係数・所得・価格調整値は架空</span> 元資料の土地転換例を残し、期間と価格年の説明を修正した。実係数を選定した事例でも、PRISMを実行した結果でもない。</p>
+<h3>A.1 草地5 haを工場用地へ転換する</h3>
+<p>対策・事業がない場合は草地が維持されると仮定。転換前後で同じサービス・受益者・価値概念・価格年を比較し、損失を正の金額で示す。毎年の便益差は一定、年末発生、評価期間50年、実質割引率2.25%、50年後の残存影響は含めない。</p>
+<div class="table-wrap"><table><thead><tr><th>手順</th><th>計算</th><th>結果</th></tr></thead><tbody>
+<tr><td>年間単位価値の差</td><td>草地1,200 − 転換後200</td><td>1,000 Int$/ha/年（2020年価格）</td></tr>
+<tr><td>面積と所得調整</td><td>1,000 × 5 × 1.4<sup>0.38</sup></td><td>5,681.97 Int$/年</td></tr>
+<tr><td>価格年調整</td><td>上記 × 1.10</td><td>6,250.16 Int$/年（2025年価格）</td></tr>
+<tr><td>50年の現在価値</td><td>6,250.16 × {1 − (1.0225)<sup>−50</sup>} ÷ 0.0225</td><td><b>186,470 Int$（2025年価格）</b></td></tr></tbody></table></div>
+<p>Int$（国際ドル）は購買力平価に基づく単位で、市場為替の米ドルではない。この例の所得比・価格年調整は、共通の実質所得・国際ドル基準に整えた設定とする。実務では使うPPP系列・デフレータ・基準年を特定する。</p>
+<div class="table-wrap"><table><thead><tr><th>変える前提</th><th>現在価値</th><th>基本ケースとの差</th></tr></thead><tbody><tr><td>所得弾力性を0.38→1.0</td><td>229,725 Int$</td><td>＋23%</td></tr><tr><td>一定の損失が無期限に継続</td><td>277,785 Int$</td><td>＋49%</td></tr><tr><td>転換後の価値を200→0</td><td>223,764 Int$</td><td>＋20%</td></tr></tbody></table></div>
+<p>不可逆な転換でも、50年で損失が終わるわけではない。ゼロの残存価値は評価境界の選択である。また、面積への比例、一定の年間価値、転換前後に同じ所得補正を使うことは簡略化。非線形性、回復、閾値、他地域への影響を必要に応じてモデル化する。</p>
+<h3>A.2 当年のNOₓ排出12,000 kgを評価する</h3>
+<p>大気排出の厚生係数を架空の20 €/kg（2021年価格）、2025年への架空の物価係数を1.10とする。<b>12,000 × 20 × 1.10 ＝ 264,000 €</b>が当年の排出に対応する評価額。実際のCE Delft係数を引用した計算ではない。</p>
+<p>この例では係数が想定する将来被害の扱いを変えず、当年排出分に追加の期間割引はしていない。実務では、係数に将来被害の割引が含まれているかを原典で確認する。</p>
+<div class="note"><b>適用条件と合算</b><p>EUの排出条件を前提とする係数を、日本で使えると確認した例ではない。人口・曝露・排出源・拡散・被害経路が違えば、所得補正だけでは適合しない。学習計算ができても実務採用の根拠にはならない。</p><p>A.1は50年の現在価値、A.2は当年排出の評価額なので、<b>このままは別表示</b>。合算するなら、同じ対象期間・計上基準・価値概念・通貨価格年へ組み直し、土地と排出の評価に同じ影響が重複しないか確認する。</p></div>
+<h3>A.3 保存する記録</h3>
+<div class="table-wrap"><table><thead><tr><th>記録するもの</th><th>記入内容</th></tr></thead><tbody><tr><td>目的・判断・対象</td><td>社会的便益／投資判断等、意思決定者、拠点、課題、受益者・被害者</td></tr><tr><td>物理量</td><td>値、単位、期間、水源・排出先・土地区分、実測／推計、出典ID</td></tr><tr><td>係数</td><td>資料・版・表行・係数ID、単位、地理、価格年、適用・除外条件</td></tr><tr><td>設計・換算</td><td>反実仮想、価値概念、補正前後の値、換算順序、割引率・発生時期・期間、年額／一回限り／現在価値</td></tr><tr><td>不確実性・未評価</td><td>分布と相関の根拠、シナリオ、範囲の意味、未評価・除外と理由</td></tr><tr><td>選択・再現</td><td>代表値と選択理由、担当・日時、計算式・版、入力参照、乱数シード等、更新履歴</td></tr></tbody></table></div>
+</section><section id="app-b"><h2>付録B　必要になってから読む発展事項</h2>
+<details><summary>B.1 価値移転、所得調整、分配</summary><p>移転には、単位値移転、調整付き単位値移転、価値関数移転、メタ分析関数移転がある。関数が複雑なら常に正確というわけではなく、対象サービス・地域・人口の適合性が重要。既存研究の要約平均はそのまま転用する係数とは限らない。</p><div class="formula">対象地のWTP ＝ 研究地のWTP × (対象地所得 ÷ 研究地所得)<sup>ε</sup></div><p>εは所得弾力性。実証値は対象や研究設計で異なるので、本資料では暗記対象にしない。適用研究に合う値を選び感度分析する。所得補正は支払能力の差を金額へ反映するため、低所得地域の同じ物理的被害が小さく評価されうる。影響を受ける集団別にも示し、衡平性の扱いを明記する。</p><p>受益者数を無制限に広げず、距離減衰・代替地・重複利用を検討する。平均値×面積の結果は限界価値ではなく、比例性や閾値を無視すると過大にも過小にもなる。</p></details>
+<details><summary>B.2 割引率、実質・名目、係数内の時間</summary><p>現在価値は Σ V<sub>t</sub>/(1+r)<sup>t</sup>。社会的評価と企業の財務評価で同じrを当然には使わない。実質の将来額には実質割引率、名目額には名目割引率を対応させ、基準日と支出時点もそろえる。</p><p>社会的割引率には市場を参照する考え方と、純粋時間選好・成長・限界効用等を用いる規範的な考え方がある。ラムゼー式 r＝δ＋ηg は後者の基礎的表現。ここでηは限界効用の弾力性であり、価値移転の所得弾力性εと混同しない。</p><p>係数が将来損害を既に割り引いている場合、同じ時間を重ねて割り引かない。時点の違う排出・費用を共通の評価基準日に換算する割引は別。発生確率を織り込むことと、資本コストに反映するリスク調整も同義ではなく、どのリスクをどこに反映したか整合させる。</p></details>
+<details><summary>B.3 不確実性・感度分析・平均</summary><div class="table-wrap"><table><thead><tr><th>種類</th><th>例</th><th>扱い</th></tr></thead><tbody><tr><td>パラメータ</td><td>測定誤差、係数の推定誤差</td><td>根拠のある分布と相関で伝播</td></tr><tr><td>モデル</td><td>被害経路や関数の違い</td><td>複数モデルを並置し、違いを説明</td></tr><tr><td>選択に起因</td><td>反実仮想、境界、割引率</td><td>代替前提をシナリオ・感度分析で示す</td></tr></tbody></table></div><p>地域差・年変動など実在するばらつきと、知らないことに由来する不確実性も分ける。単一入力を振るトルネード図は追加調査の優先度の参考になるが、相互作用をすべて捉えない。</p><p>対数正規分布は正の右裾が長い値の候補で、ゼロ・負値へそのまま適用できない。PERT・三角分布は専門家の最小・最頻・最大等に基づく近似。一様分布も「情報がない」ことから自動的に正当化されるわけではない。</p><p>幾何平均は対数正規母集団の中央値に対応する代表値。標本の幾何平均と標本中央値は必ずしも一致しない。期待総額には算術平均を使う。相関のある金額の合計では、独立を仮定すると正相関の場合に分散を過小、負相関では過大に評価しうる。分位点の足し算は一般に合計の分位点ではない。</p><p>LCAのペディグリーマトリクス（信頼性・完全性・時間・地理・技術の代表性）と、PRISMの5項目の移転適合度は別の評価体系。どちらも価値概念の妥当性を自動で保証しない。</p></details>
+<details><summary>B.4 貨幣化しない価値と、対策の順序</summary><p>文化的・関係的・内在的価値や権利を、貨幣評価の総額で代表させない。保全対象・不可逆性・地域社会の関与を別に示す。一般に、影響の回避、最小化、回復等の検討を優先し、貨幣額が相殺できることを生態学的な等価性と混同しない。</p><p>追加便益を主張するなら、反実仮想、帰属、他地域への負荷移転、持続性・回復時間を確認する。高いNPVや貨幣便益は、法令・権利・生態学的な制約を無効にしない。</p></details>
+<details><summary>B.5 開示制度は、貨幣評価手法とは別に確認する</summary><p>TNFDは4本柱・14の推奨開示と6つの一般要件から構成され、LEAPは評価ガイダンス。自然関連のすべての項目を貨幣化する共通係数を定める枠組みではない。SEEA EAも企業財務諸表の認識ルールとは別で、第1〜7章の統計基準と貨幣評価部分等の位置づけを区別する。</p><p>SSBJ/ISSBの重要な財務的影響の開示と、自然への社会的インパクトの全面貨幣化は同じ要求ではない。ESRSのインパクト・財務の両面の重要性とも区別する。適用企業・時期・経過措置・改訂状況は変わるため、本書では日付の暗記表を置かず、<a href="https://www.fsa.go.jp/policy/kaiji/sustainability-kaiji.html">金融庁</a>、<a href="https://www.ssb-j.jp/jp/ssbj_standards.html">SSBJ</a>、<a href="https://www.ifrs.org/projects/work-plan/biodiversity-ecosystems-and-ecosystem-services/">IFRS財団</a>、<a href="https://finance.ec.europa.eu/financial-markets/company-reporting-and-auditing/company-reporting/corporate-sustainability-reporting_en">欧州委員会</a>で案件ごとに確認する。</p><p>2026年7月3日の改訂ESRSの採択は欧州委員会公表で確認できるが、採択・発効・適用は別の段階。制度に言及する資料では、確認日と根拠法令・公表資料を付ける。</p></details>
+</section><section id="app-c"><h2>付録C　会話で使う用語</h2>
+<div class="table-wrap"><table><thead><tr><th>用語</th><th>本書での意味</th></tr></thead><tbody>
+<tr><td>自然資本／生態系サービス</td><td>自然の資産・ストック／人や事業に便益をもたらす生態系の働き</td></tr>
+<tr><td>DIRO</td><td>Dependencies・Impacts・Risks・Opportunities。依存・影響・リスク・機会</td></tr>
+<tr><td>影響ドライバー／自然の状態</td><td>土地改変や汚染等の変化を起こす要因／生態系の範囲・状態や種の状況</td></tr>
+<tr><td>インパクト経路</td><td>活動から負荷、状態変化、人の厚生等への因果の連鎖。IFVIのinputs→activities→outputs→outcomes→impactsも参照される</td></tr>
+<tr><td>LCI／LCIA／AoP</td><td>ライフサイクルの投入・排出等の一覧／その影響評価／Area of Protection、保護対象</td></tr>
+<tr><td>DALY／EINES／NPP</td><td>障害調整生存年（健康損失）／絶滅種数期待増分／純一次生産量。係数では損失量等として表す。単位と範囲を確認</td></tr>
+<tr><td>MSA／PDF／STAR</td><td>平均種豊富度／種の潜在的消失割合／種への脅威軽減・回復の指標。意味と用途が異なり単純換算しない</td></tr>
+<tr><td>損害費用／防止費用／復元費用</td><td>被害の貨幣評価／負荷削減等に必要な費用／復元に必要な費用。異なる問い</td></tr>
+<tr><td>WTP／WTA／TEV</td><td>支払意思額／受入補償額／総経済価値。非利用価値を含みうるが自然の全価値とは限らない</td></tr>
+<tr><td>PPP／価格年／デフレータ</td><td>購買力平価／金額の購買力の基準年／物価変化を調整する指数。排出年・刊行年と価格年は別</td></tr>
+<tr><td>NPV／DCF／非GAAP指標</td><td>正味現在価値／割引キャッシュフロー法／会計基準が定める指標とは別に構成した指標</td></tr>
+<tr><td>感度分析／シナリオ分析</td><td>入力変更への結果の反応／整合した複数の将来像・前提集合による比較</td></tr>
+<tr><td>ValuationRecord／DecisionRecord</td><td>PRISMの評価結果と根拠の記録／判断対象・承認基準・判定・反映先等の記録</td></tr>
+<tr><td>トレース／比較レシピ／残差</td><td>再計算できる計算過程／前提の差し替え規則／説明できた寄与以外に残る差</td></tr>
+<tr><td>内部化／自然債務</td><td>企業負担として現れること／PRISMがシナリオと確率・時期から作る参考指標。会計負債ではない</td></tr>
+<tr><td>開示下書き／保証</td><td>報告内容の作成補助／独立した業務として証拠等に基づき結論を表明すること。台帳だけでは保証を取得したことにならない</td></tr>
+</tbody></table></div>
+</section><section id="sources"><h2>付録D　原典とPRISMの確認先</h2>
+<p>一般論は原典、PRISMの仕様はコードと受入資料で確認する。古い構想書・デモ手順書と現行コードが異なる場合は、現行コードを優先した。既存の受入資料の実施日は、そのまま現在の稼働実績を示すものではない。</p>
+<h3>一般的な評価方法の原典</h3>
+<ol class="sources">
+<li id="s-protocol"><b>Natural Capital Protocol（2016）</b>：目的・範囲・重要性・測定・評価・適用、評価技法はAnnex B。<a href="https://capitalscoalition.org/wp-content/uploads/2021/01/NCC_Protocol.pdf">本文PDF</a>。</li>
+<li id="s-tnfd"><b>TNFD Recommendations（2023年9月）</b>：DIRO、リスク分類（物理・移行・システミック）、開示構成。<a href="https://tnfd.global/wp-content/uploads/2023/08/Recommendations_of_the_Taskforce_on_Nature-related_Financial_Disclosures_September_2023.pdf">本文PDF</a>。</li>
+<li id="s-ipbes"><b>IPBES Global Assessment（2019）・Values Assessment（2022）</b>：直接要因と価値の多様性。<a href="https://www.ipbes.net/global-assessment">地球規模評価</a>／<a href="https://www.ipbes.net/the-values-assessment">価値評価</a>。</li>
+<li id="s-seea"><b>SEEA EA（2021）</b>：第8章（交換価値）、第10章（資産）、第12章・Table 12.1（会計と厚生の関係）。<a href="https://seea.un.org/sites/seea.un.org/files/documents/EA/seea_ea_white_cover_final.pdf">本文PDF</a>／<a href="https://seea.un.org/fr/node/762">貨幣評価の実施資料</a>。</li>
+<li id="s-iso"><b>ISO 14040 / 14044・ISO 14008:2019</b>：LCAの工程と環境影響の貨幣評価。規格本文の利用条件に従って参照。</li>
+<li id="s-ipcc"><b>IPCC AR6 WG1 第7章／2006 Guidelines Vol.1 Ch.3</b>：排出指標と不確実性。<a href="https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-7/">AR6第7章</a>／<a href="https://www.ipcc-nggip.iges.or.jp/public/2006gl/vol1.html">2006 Guidelines</a>。</li>
+<li id="s-ifvi"><b>IFVI/VBA GM1（2024）・GM2</b>：インパクト会計の枠組みと評価技法。<a href="https://ifvi.org/methodology/general-methodology/general-methodology-1/">GM1</a>／<a href="https://ifvi.org/methodology/general-methodology/general-methodology-2-impact-measurement-and-valuation-techniques/">GM2</a>。</li>
+<li id="s-ifvi-water"><b>IFVI/VBA Water Consumption Topic Methodology（2026年3月）</b>：4つの影響。式・実装の詳細はPRISMコードと照合。<a href="https://ifvi.org/methodology/environmental-topic-methodology/water-consumption-topic-methodology/">公式ページ</a>。</li>
+<li id="s-lime"><b>伊坪徳宏・稲葉敦編『LIME3 改訂増補』／利用する係数セット</b>：被害評価・統合化。<a href="https://lca-forum.org/english/lime/">LCA日本フォーラム</a>。本書は有償係数表を転載していない。</li>
+<li id="s-esvd"><b>ESVD／Brander et al.（2024）, Ecosystem Services 66, 101606</b>：サービス価値の研究集積。<a href="https://www.esvd.net/">データベース</a>／<a href="https://doi.org/10.1016/j.ecoser.2024.101606">論文</a>。要約値の直接転用を避け、原典条件を確認。</li>
+<li id="s-ce"><b>CE Delft, Environmental Prices Handbook 2024 EU27 v1.1（2025年4月）</b>：§2.3（2019年排出条件）、§4.3・Table 12（2021年価格・割引率）、§7.6（補正）。<a href="https://cedelft.eu/publications/environmental-prices-handbook-2024-eu27-version/">公式ページ・訂正情報</a>／<a href="https://cedelft.eu/wp-content/uploads/sites/2/2024/12/CE_Delft_230107_Environmental-Prices-Handbook-2024-EU-version_def_V1.1.pdf">本文PDF</a>。</li>
+<li><b>発展学習</b>：Huijbregts（1998）, Int. J. LCA 3(5):273–280（不確実性とばらつき）；Johnston et al.編（2015）, Benefit Transfer of Environmental and Resource Values（便益移転）；<a href="https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government">HM Treasury, The Green Book</a>（割引と公共評価。利用する版を確認）。</li>
+<li><b>制度更新</b>：<a href="https://finance.ec.europa.eu/news/commission-adopts-revised-sustainability-reporting-standards-2026-07-03_en">欧州委員会・2026年7月3日の改訂ESRS採択公表</a>。その他の現行制度の確認先は付録B.5。</li>
+</ol>
+<h3>PRISM：主張と実装の対応</h3>
+<p class="meta">以下は実装確認時のPRISMリポジトリ内の相対パス。製品の入力画面にこれらのファイル名を入力する必要はない。リポジトリ本体とレビュー作業用ファイルは、この公開サイトには含めない。</p>
+<div class="table-wrap"><table><thead><tr><th>本書の説明</th><th>確認したファイル</th></tr></thead><tbody>
+<tr id="p-flow"><td>画面・処理のつながり</td><td><code>app/guide/page.tsx</code><br><code>lib/demo/run-demo-pipeline.ts</code><br><code>packages/core/src/pipeline/</code></td></tr>
+<tr id="p-assessment"><td>優先度と上位20%</td><td><code>packages/core/src/assessment/priority-score.ts</code><br><code>packages/core/src/assessment/depth-decision.ts</code></td></tr>
+<tr id="p-methods"><td>登録手法、計算、IFVIの仮定・集計</td><td><code>packages/core/src/monetization/registry.ts</code><br><code>packages/core/src/monetization/plugins/</code><br><code>packages/core/src/monetization/build-valuation-records.ts</code><br><code>packages/core/src/monetization/calibration.ts</code></td></tr>
+<tr id="p-uncertainty"><td>分位点と暫定適合度</td><td><code>packages/core/src/monetization/uncertainty.ts</code><br><code>packages/core/src/monetization/fitness.ts</code></td></tr>
+<tr id="p-divergence"><td>比較条件・Shapley・残差</td><td><code>packages/core/src/divergence/comparability.ts</code><br><code>packages/core/src/divergence/recipes/registry.ts</code><br><code>packages/core/src/divergence/shapley.ts</code><br><code>packages/core/src/divergence/mode-selection.ts</code><br><code>packages/core/src/divergence/residual.ts</code></td></tr>
+<tr id="p-financial"><td>自然債務・利益、価値概念の分離</td><td><code>packages/core/src/financial-bridge/{nature-debt,bridge1,bridge2,internalization-status}.ts</code><br><code>packages/core/src/pipeline/financial-bridge-pipeline.ts</code><br><code>lib/demo/build-financial-bridge.ts</code></td></tr>
+<tr id="p-decision"><td>NPV近似・閾値の判定</td><td><code>packages/core/src/decision/nature-adjusted-npv.ts</code><br><code>packages/core/src/decision/build-decision-record.ts</code><br><code>packages/core/src/decision/dominant-assumption.ts</code><br><code>packages/core/src/types/decision.ts</code></td></tr>
+<tr id="p-disclosure"><td>AI抽出とルール照合、下書き</td><td><code>lib/ai/extract-disclosure-claims.ts</code><br><code>packages/core/src/disclosure/{gap-finding,selective-disclosure,build-disclosure-view}.ts</code><br><code>packages/core/src/types/disclosure.ts</code></td></tr>
+<tr id="p-ledger"><td>台帳・版・再計算照合</td><td><code>packages/core/src/ledger/</code><br><code>lib/demo/build-recalculation-hash.ts</code></td></tr>
+<tr id="p-acceptance"><td>完成段階と未完了事項</td><td><code>docs/roadmap/prism-completion-acceptance.md</code>（最終照合2026-09-07、作業ツリー版）</td></tr>
+<tr id="p-validation"><td>実データ実証の未達・負例</td><td><code>docs/data/divergence-validation-report.md</code>（2026-09-06）</td></tr></tbody></table></div>
+</section><footer>改訂版 v2.0 · 2026-09-22 ／ 本文12章・付録4編。実務で使用する際は、対象案件の条件と原典の該当版を確認する。</footer></main></div><script>document.querySelector('#expand').addEventListener('click',()=>document.querySelectorAll('details').forEach(x=>x.open=true));document.querySelector('#collapse').addEventListener('click',()=>document.querySelectorAll('details').forEach(x=>x.open=false));let prior=[];window.addEventListener('beforeprint',()=>{prior=[...document.querySelectorAll('details')].map(x=>x.open);document.querySelectorAll('details').forEach(x=>x.open=true)});window.addEventListener('afterprint',()=>document.querySelectorAll('details').forEach((x,i)=>x.open=prior[i]));</script></body></html>
